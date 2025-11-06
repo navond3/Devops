@@ -46,5 +46,5 @@ jobs:
     - name: Run script test
       run: |
         echo "🔍 Running script test..."
-        python your_script_name.py || exit 1
+        python 31082025.py || exit 1
         echo "✅ Script ran successfully at $(date)"
