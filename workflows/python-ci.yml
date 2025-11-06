@@ -2,9 +2,9 @@ name: ProjectActions2
 
 on:
   push:
-    branches: ["*"]       # ריצה אוטומטית על כל push
+    branches: ["main"]       # ריצה אוטומטית על כל push
   pull_request:
-    branches: ["*"]       # ריצה גם על PR
+    branches: ["main"]       # ריצה גם על PR
   schedule:
     - cron: "* * * * *"   # כל דקה
   workflow_dispatch:       # מאפשר הרצה ידנית
