@@ -2,9 +2,9 @@ name: ProjectActions2
 
 on:
   push:
-    branches: ["main"]       # ריצה אוטומטית על כל push
+    branches: ["*"]       # ריצה אוטומטית על כל push
   pull_request:
-    branches: ["main"]       # ריצה גם על PR
+    branches: ["*"]       # ריצה גם על PR
   schedule:
     - cron: "* * * * *"   # כל דקה
   workflow_dispatch:       # מאפשר הרצה ידנית
@@ -14,25 +14,36 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: Start Workflow
+      run: |
+        echo "🚀 Workflow started at $(date)"
+
     - name: Checkout repository
       uses: actions/checkout@v4
+      with:
+        fetch-depth: 1
+      run: echo "✅ Repository checked out at $(date)"
 
     - name: Set up Python
       uses: actions/setup-python@v5
       with:
         python-version: '3.10'
+      run: echo "🐍 Python 3.10 setup completed at $(date)"
 
     - name: Install dependencies
       run: |
+        echo "📦 Installing dependencies..."
         python -m pip install --upgrade pip
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
         pip install flake8
+        echo "✅ Dependencies installed at $(date)"
 
     - name: Run code quality checks
       run: |
         echo "🧹 Running flake8..."
         flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=120 --statistics
+        echo "✅ Flake8 checks completed at $(date)"
 
     - name: Run script test
       run: |
