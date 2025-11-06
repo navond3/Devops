@@ -2,9 +2,9 @@ name: Python CI
 
 on:
   push:
-    branches: ["*"]   # ירוץ על כל ענף
+    branches: ["main"]   # ירוץ על כל ענף
   pull_request:
-    branches: ["*"]
+    branches: ["main"]
   schedule:           # ירוץ אוטומטית לפי לוח זמנים
     - cron: "0 0 * * *"  # כל יום בחצות (UTC)
   workflow_dispatch:   # מאפשר הרצה ידנית מה-GitHub
