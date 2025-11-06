@@ -1,13 +1,13 @@
-name: Python CI
+name: ProjectActions2
 
 on:
   push:
-    branches: ["main"]   # ירוץ על כל ענף
+    branches: ["main"]       # ריצה אוטומטית על כל push
   pull_request:
-    branches: ["main"]
-  schedule:           # ירוץ אוטומטית לפי לוח זמנים
-    - cron: "*/5 * * * *"  # כל יום בחצות (UTC)
-  workflow_dispatch:   # מאפשר הרצה ידנית מה-GitHub
+    branches: ["main"]       # ריצה גם על PR
+  schedule:
+    - cron: "* * * * *"   # כל דקה
+  workflow_dispatch:       # מאפשר הרצה ידנית
 
 jobs:
   build:
@@ -38,3 +38,4 @@ jobs:
       run: |
         echo "🔍 Running script test..."
         python your_script_name.py || exit 1
+        echo "✅ Script ran successfully at $(date)"
