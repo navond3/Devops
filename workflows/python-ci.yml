@@ -6,7 +6,7 @@ on:
   pull_request:
     branches: ["main"]
   schedule:           # ירוץ אוטומטית לפי לוח זמנים
-    - cron: "0 0 * * *"  # כל יום בחצות (UTC)
+    - cron: "*/5 * * * *"  # כל יום בחצות (UTC)
   workflow_dispatch:   # מאפשר הרצה ידנית מה-GitHub
 
 jobs:
