@@ -20,12 +20,14 @@ jobs:
       uses: actions/checkout@v4
       with:
         fetch-depth: 1
+    - name: Post-Checkout Message
       run: echo "✅ Repository checked out at $(date)"
 
     - name: Set up Python
       uses: actions/setup-python@v5
       with:
         python-version: '3.10'
+    - name: Post-Python Setup Message
       run: echo "🐍 Python 3.10 setup completed at $(date)"
 
     - name: Install dependencies
